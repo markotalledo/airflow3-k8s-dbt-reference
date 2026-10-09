@@ -1,0 +1,9 @@
+# Identity for the task pods. In EKS, annotate it with an IAM role (IRSA) that can
+# read the raw bucket and write the clean bucket, and nothing else.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: shop-pipelines
+  namespace: airflow
+  # annotations:
+  #   eks.amazonaws.com/role-arn: arn:aws:iam::<account_id>:role/shop-pipelines

@@ -1,0 +1,4 @@
+{
+  "warehouse": {"slots": 2, "description": "Concurrent dbt runs against the warehouse", "include_deferred": false},
+  "spark": {"slots": 1, "description": "Concurrent Spark jobs", "include_deferred": false}
+}

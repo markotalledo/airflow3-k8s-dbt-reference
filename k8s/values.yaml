@@ -1,0 +1,29 @@
+# Values for the official Apache Airflow Helm chart (https://airflow.apache.org).
+airflowVersion: "3.3.2"
+defaultAirflowTag: "3.3.2"
+
+# One pod per task: nothing idle between runs, and task pods inherit the
+# worker's permission to launch the KubernetesPodOperator pods.
+executor: KubernetesExecutor
+
+dags:
+  gitSync:
+    enabled: true
+    repo: https://github.com/markotalledo/airflow3-k8s-dbt-reference.git
+    branch: main
+    subPath: dags
+    period: 60s
+
+config:
+  core:
+    load_examples: "False"
+  logging:
+    remote_logging: "False"
+
+# Local cluster only. In production point at a managed Postgres instead.
+postgresql:
+  enabled: true
+
+logs:
+  persistence:
+    enabled: false
